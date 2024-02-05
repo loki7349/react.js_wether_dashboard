@@ -8,6 +8,7 @@ import getFormattedWeatherData from "./services/weatherService";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import TravelerDashboard from './Features/EventPlannerDashboard'
 
 function App() {
   const [query, setQuery] = useState({ q: "berlin" });
@@ -54,6 +55,9 @@ function App() {
 
           <Forecast title="hourly forecast" items={weather.hourly} />
           <Forecast title="daily forecast" items={weather.daily} />
+          {userType === 'eventPlanner' && <EventPlannerDashboard />}
+          {userType === 'farmer' && <FarmerDashboard />}
+          {userType === 'traveler' && <TravelerDashboard />}
         </div>
       )}
 
